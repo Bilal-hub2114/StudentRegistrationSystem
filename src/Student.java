@@ -7,7 +7,7 @@ public class Student {
     private int studentID;
     private int studentClass;
 
-    public Student(String studentName,String studentSurname,String studentEmail,int studentID,int studentClass,String StudentPhoneNumber){
+    public Student(String studentName,String studentSurname,String studentEmail,int studentID,int studentClass,String studentPhoneNumber){
         this.studentName=studentName;
         this.studentSurname=studentSurname;
         this.studentID=studentID;
@@ -27,18 +27,18 @@ public class Student {
     public int getStudentClass(){
         return studentClass;
     }
-    public String getStudentPhoneNumber(){
-        return studentPhoneNumber;
-    }
     public String getStudentEmail(){
         return studentEmail;
+    }
+    public String getStudentPhoneNumber(){
+        return studentPhoneNumber;
     }
 
 
     public void printStudent(){
 
-        System.out.println("Ögrencinin Adı: "+getStudentName());
-        System.out.println("Ögrencinin Soyadı: "+getStudentSurname());
-        System.out.println("Öğrencinin "+getStundentID());
+        System.out.println("Ögrencinin Adı: "+getStudentName()+" Soyadı: "+getStudentSurname()+" ID'si: "+getStundentID());
+        System.out.println("Öğrenci "+getStudentClass()+". "+ "sınıfta"+" Maili: "+ getStudentEmail());
+        System.out.println("Öğrencinin Numarası: "+getStudentPhoneNumber());
     }
 }
