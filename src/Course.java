@@ -11,16 +11,21 @@ public class Course {
         while(true){
             System.out.print("Ders: ");
             String input=scan.nextLine();
-            liste.add(input);
 
-
-            System.out.println("Ders eklemeyi bitirmek istiyorsanız 'bitir' yazınız.");
-            if(input=="bitir"){
+            if(input.equalsIgnoreCase("bitir")){
                 break;
             }
+            liste.add(input);
+            System.out.println("Ders eklemeyi bitirmek için 'bitir' yazınız.");
+
+
+
+
 
 
         }
+        System.out.println("Eklenen dersler: "+liste);
     }
+
 
 }
