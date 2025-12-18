@@ -3,9 +3,24 @@ import java.util.Scanner;
 public class Course {
 
 
-    public void courseInput() {
+    void printList( ArrayList<String> list){
+        int i=1;
+        for(String s: list){
+            System.out.println(i+") "+s);
+            i++;
+        }
+
+    }
+    public ArrayList<String> courseInput() {
         Scanner scan = new Scanner(System.in);
-        ArrayList<String> liste = new ArrayList<>();
+        ArrayList<String> courses = new ArrayList<>();
+        ArrayList<String> list=new ArrayList<>();
+
+        list.add("Bilgisayar Mühendisliğine Giriş"); list.add("Algoritma ve Programlama-I"); list.add("Matematik-I"); list.add("Fizik-I"); list.add("İngilizce-I"); list.add("Yükseköğretime Giriş");
+        list.add("Algoritma ve Programlama-II"); list.add("Matematik-II"); list.add("Lineer Cebir ve Uygulamaları"); list.add("Fizik-II"); list.add("Türk Dili-II"); list.add("İngilizce-II");
+
+       printList(list);
+
         System.out.println("Almak istediğiniz dersleri giriniz.");
         while (true) {
             System.out.print("Ders: ");
@@ -14,25 +29,25 @@ public class Course {
             if (input.equalsIgnoreCase("bitir")) {
                 break;
             }
-            liste.add(input);
+            courses.add(input);
             System.out.println("Ders eklemeyi bitirmek için 'bitir' yazınız.");
 
         }
-        System.out.println("Eklenen dersler: " + liste);
+        System.out.println("Eklenen dersler: " + courses);
         // bu bloğu öğrencinin kaçıncı sınıf olduğuna göre
         //değişiklik göstermel
-
+        return courses;
 
     }
 
-    double calculateTuition(ArrayList<String> liste) {
+    double calculateTuition(ArrayList<String> courses) {
         double price = 0;
-        for (int i = 0; i < liste.size(); i++) {
-            switch (liste.get(i)) {
+        for (int i = 0; i < courses.size(); i++) {
+            switch (courses.get(i)) {
                 case "Matematik-I":
                     price += 30000;
                     break;
-                case "ingilizce-I":
+                case "İngilizce-I":
                     price += 15000;
                     break;
                 case "Türk Dili-I":
@@ -41,7 +56,7 @@ public class Course {
                 case "Fizik-I":
                     price += 25000;
                     break;
-                case "Bilgisayar Mühendisliğe Giriş":
+                case "Bilgisayar Mühendisliğine Giriş":
                     price += 20000;
                     break;
                 case "Algoritme ve Programlama-I":
@@ -72,5 +87,6 @@ public class Course {
         }
         return price;
     }
+
 
 }

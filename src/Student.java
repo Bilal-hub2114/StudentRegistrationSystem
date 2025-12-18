@@ -1,19 +1,23 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Student {
 
     private String studentName;
     private String studentSurname;
     private String studentEmail;
-    private String studentPhoneNumber;
     private int studentID;
-    private int studentClass;
+    private int studentGrade;
+    private String studentPassword;
 
-    public Student(String studentName,String studentSurname,String studentEmail,int studentID,int studentClass,String studentPhoneNumber){
+    public Student(String studentName,String studentSurname,String studentEmail,int studentID,int studentGrade,String studentPassword) {
         this.studentName=studentName;
         this.studentSurname=studentSurname;
         this.studentID=studentID;
         this.studentEmail=studentEmail;
-        this.studentClass=studentClass;
-        this.studentPhoneNumber=studentPhoneNumber;
+        this.studentGrade=studentGrade;
+        this.studentPassword=studentPassword;
     }
     public String getStudentName(){
         return studentName;
@@ -24,21 +28,21 @@ public class Student {
     public int getStundentID(){
         return studentID;
     }
-    public int getStudentClass(){
-        return studentClass;
+    public int getStudentGrade(){
+        return studentGrade;
     }
-    public String getStudentEmail(){
-        return studentEmail;
-    }
-    public String getStudentPhoneNumber(){
-        return studentPhoneNumber;
-    }
+    public String getStudentEmail(){ return studentEmail; }
+    public String getStudentPassword(){ return studentPassword; }
+
+
+    Scanner sc=new Scanner(System.in);
+    ArrayList<String> student=new ArrayList<String>();
 
 
     public void printStudent(){
 
         System.out.println("Ögrencinin Adı: "+getStudentName()+" Soyadı: "+getStudentSurname()+" ID'si: "+getStundentID());
-        System.out.println("Öğrenci "+getStudentClass()+". "+ "sınıfta"+" Maili: "+ getStudentEmail());
-        System.out.println("Öğrencinin Numarası: "+getStudentPhoneNumber());
+        System.out.println("Öğrenci "+getStudentGrade()+". "+ "sınıfta"+" Maili: "+ getStudentEmail());
+
     }
 }
