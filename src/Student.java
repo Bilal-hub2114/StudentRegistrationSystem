@@ -8,7 +8,6 @@ public class Student {
     private String studentSurname;
     private String studentEmail;
     private int studentID;
-
     private String studentPassword;
     private int scholarshipAmount;
 
@@ -17,7 +16,6 @@ public class Student {
         this.studentSurname=studentSurname;
         this.studentID=studentID;
         this.studentEmail=studentEmail;
-
         this.studentPassword=studentPassword;
         this.scholarshipAmount=scholarshipAmount;
     }
@@ -36,14 +34,10 @@ public class Student {
     public int getScholarshipAmount(){ return scholarshipAmount; }
 
 
-    Scanner sc=new Scanner(System.in);
-    ArrayList<String> student=new ArrayList<String>();
-
-
     public void printStudent(){
 
         System.out.println("Ögrencinin Adı: "+getStudentName()+" Soyadı: "+getStudentSurname()+" ID'si: "+getStundentID());
-        System.out.println("Öğrenci "+". "+ "sınıfta"+" Maili: "+ getStudentEmail()+" Öğrencinin Bursu: %"+getScholarshipAmount());
+        System.out.println("Öğrenci Maili: "+ getStudentEmail()+" Öğrencinin Bursu: %"+getScholarshipAmount());
 
     }
 

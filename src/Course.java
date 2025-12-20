@@ -10,6 +10,7 @@ public class Course {
 static Map<Integer,String> sınıfınagöreListe =new HashMap<>();
   static Map<String,Double> fiyatTablosu=new HashMap<>();
   static{
+      //1.sınıflar için:
       greade1List.add("Bilgisayar Mühendisliğine Giriş");
       greade1List.add("Algoritma ve Programlama-I");
       greade1List.add("Algoritma ve Programlama-II");
@@ -56,8 +57,6 @@ static Map<Integer,String> sınıfınagöreListe =new HashMap<>();
       greade3List.add("Sistem Analizi ve Tasarımı");
       greade3List.add("Çevre Koruma, İş Sağlığı ve Güvenliği ");
       greade3List.add("Mesleki Sorumluluk ve Etik");
-      greade3List.add("");
-      greade3List.add("");
       greade3List.add("Genel Biyoloji");
       greade3List.add("İşaretler ve Sistemler");
       greade3List.add("Sayısal Tasarıma Giriş");
@@ -124,9 +123,9 @@ static Map<Integer,String> sınıfınagöreListe =new HashMap<>();
 
 
 
-      fiyatTablosu.put("Bilgisayar Mühendisliğine Giriş",40500.0);
-        fiyatTablosu.put("Algoritma ve Programlama-I",3455.0);
-        fiyatTablosu.put("Algoritma ve Programlama-II",3453.5);
+      fiyatTablosu.put("Bilgisayar Mühendisliğine Giriş",40.00);
+        fiyatTablosu.put("Algoritma ve Programlama-I",35.00);
+        fiyatTablosu.put("Algoritma ve Programlama-II",35.00);
         fiyatTablosu.put("Matematik-I",345.5);
        fiyatTablosu.put("Matematik-II",5675.8);
         fiyatTablosu.put("Fizik-I",345.5);
@@ -141,23 +140,11 @@ static Map<Integer,String> sınıfınagöreListe =new HashMap<>();
 //aynısını 4 ders içinde yapılacak
 }
 
-
-    void printList( ArrayList<String> list){
-        int i=1;   //listenin içerisindeki dersleri ekrana yazdırır...
-        for(String s: list){
-            System.out.println(i+") "+s);
-            i++;
-        }
-
-    }
     //4 tane ayrı liste 4 ünede ayrı ayrı dersler add lenecek ve bunları başta görmesi için printleyeceğiz ve bunları da tek tek ücretlerini yazıp tutarı hesaplayıp return ettireceğiz
     //bunu da burs ile hesaplayıp tekrar printleyeceğiz ve mainde güncel tutarı yazdıracağız
     public ArrayList<String> courseInput() {
         Scanner scan = new Scanner(System.in);
         ArrayList<String> courses = new ArrayList<>();
-
-
-
 
         // bu kodun aşağısı  dersleri alır ve ona göre ne aldıysa o dersi döner
         System.out.println("Almak istediğiniz dersleri giriniz.");
@@ -170,12 +157,11 @@ static Map<Integer,String> sınıfınagöreListe =new HashMap<>();
             }
             courses.add(input);
             System.out.println("Ders eklemeyi bitirmek için 'bitir' yazınız.");
-
         }
         System.out.println("Eklenen dersler: " + courses);
         return courses;
-
     }
+
 
     static double calculateTuition(ArrayList<String> course) {
         double price=0;
