@@ -14,10 +14,10 @@ public class Main{
         System.out.print("Lüften şifrenizi giriniz: ");
         String inputstudentPassword = scan.next();
 
-        Student student = new Student("Bilal","Ay","bilalay25@istanbularel.edu.tr",240309006,1,"bilalay321");
-        Student student2 = new Student("Arda","Abacı","ardaabacı24@istanbularel.edu.tr",240309007,2,"ardaabacı321");
-        Student student3 = new Student("Şevval Esma","Çoban","şevvalcoban23@istanbularel.edu.tr",240309005,3,"şevvalçoban321");
-        Student student4 = new Student("Tuba Süeda","Aytan","tubaaytan22@istanbularel.edu.tr",240309008,4,"tubaaytan321");
+        Student student = new Student("Bilal","Ay","bilalay25@istanbularel.edu.tr",240309006,"bilalay321",25);
+        Student student2 = new Student("Arda","Abacı","ardaabacı24@istanbularel.edu.tr",240309007,"ardaabacı321",50);
+        Student student3 = new Student("Şevval Esma","Çoban","şevvalcoban23@istanbularel.edu.tr",240309005,"şevvalçoban321",100);
+        Student student4 = new Student("Tuba Süeda","Aytan","tubaaytan22@istanbularel.edu.tr",240309008,"tubaaytan321",100);
 
         studentsList.add(student);
         studentsList.add(student2);
@@ -42,13 +42,15 @@ public class Main{
         if(!found){
             System.out.println("Hata! "+ inputstudentID+ " Numaralı öğrenci bulunamadı...");
         }
+        System.out.println("Kaçıncı sınıf olduğunuzu giriniz: ");
+        int studentGreade=scan.nextInt();
 
-
+        System.out.println();
         System.out.println("Lütfen yapmak istediğiniz işlem türünü seçiniz: ");
         System.out.println("1 - Ders Ekle/Çıkar");
         System.out.println("2 - Ders Listesi Görüntüle");
         System.out.println("3 - Ders Kayıt Olma");
-        System.out.println("Seçiminiz: ");
+        System.out.print("Seçiminiz: ");
         int select = scan.nextInt();
 
         switch(select){
@@ -59,11 +61,10 @@ public class Main{
                 //kaçıncı sınıf olduğunu göster ve o sınıfa göre ekrana o dönemin derslerini printle liste şeklinde.
                 break;
             case 3:
-                ArrayList<String> benimliste = course.courseInput();
-                course.printList(benimliste);
-                ArrayList<String> selectedcourses = course.courseInput();
-                double sum = course.calculateTuition(selectedcourses);
-                System.out.println("Dönemin Toplam Ücreti: "+sum);
+                ArrayList<String> courseList = course.courseInput();
+                course.printList(courseList);
+                double sum = course.calculateTuition(courseList);
+                System.out.println("Dönemin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ course.scholarshipAmount(course.calculateTuition(courseList),student.getScholarshipAmount())+ " TL");
                 break;
         }
     }

@@ -8,17 +8,20 @@ public class Student {
     private String studentSurname;
     private String studentEmail;
     private int studentID;
-    private int studentGrade;
-    private String studentPassword;
 
-    public Student(String studentName,String studentSurname,String studentEmail,int studentID,int studentGrade,String studentPassword) {
+    private String studentPassword;
+    private int scholarshipAmount;
+
+    public Student(String studentName,String studentSurname,String studentEmail,int studentID,String studentPassword,int scholarshipAmount) {
         this.studentName=studentName;
         this.studentSurname=studentSurname;
         this.studentID=studentID;
         this.studentEmail=studentEmail;
-        this.studentGrade=studentGrade;
+
         this.studentPassword=studentPassword;
+        this.scholarshipAmount=scholarshipAmount;
     }
+
     public String getStudentName(){
         return studentName;
     }
@@ -28,11 +31,9 @@ public class Student {
     public int getStundentID(){
         return studentID;
     }
-    public int getStudentGrade(){
-        return studentGrade;
-    }
     public String getStudentEmail(){ return studentEmail; }
     public String getStudentPassword(){ return studentPassword; }
+    public int getScholarshipAmount(){ return scholarshipAmount; }
 
 
     Scanner sc=new Scanner(System.in);
@@ -42,7 +43,8 @@ public class Student {
     public void printStudent(){
 
         System.out.println("Ögrencinin Adı: "+getStudentName()+" Soyadı: "+getStudentSurname()+" ID'si: "+getStundentID());
-        System.out.println("Öğrenci "+getStudentGrade()+". "+ "sınıfta"+" Maili: "+ getStudentEmail());
+        System.out.println("Öğrenci "+". "+ "sınıfta"+" Maili: "+ getStudentEmail()+" Öğrencinin Bursu: %"+getScholarshipAmount());
 
     }
+
 }
