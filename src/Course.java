@@ -7,8 +7,8 @@ public class Course {
     static ArrayList<String> greade2List = new ArrayList<>();
     static ArrayList<String> greade3List = new ArrayList<>();
     static ArrayList<String> greade4List = new ArrayList<>();
-static Map<Integer,String> sınıfınagöreListe =new HashMap<>();
-  static Map<String,Double> fiyatTablosu=new HashMap<>();
+
+  static Map<String,Double> priceChart=new HashMap<>();
   static{
       //1.sınıflar için:
       greade1List.add("Bilgisayar Mühendisliğine Giriş");
@@ -123,30 +123,86 @@ static Map<Integer,String> sınıfınagöreListe =new HashMap<>();
 
 
 
-      fiyatTablosu.put("Bilgisayar Mühendisliğine Giriş",40.00);
-        fiyatTablosu.put("Algoritma ve Programlama-I",35.00);
-        fiyatTablosu.put("Algoritma ve Programlama-II",35.00);
-        fiyatTablosu.put("Matematik-I",345.5);
-       fiyatTablosu.put("Matematik-II",5675.8);
-        fiyatTablosu.put("Fizik-I",345.5);
-        fiyatTablosu.put("Fizik-II",12313.5);
-       fiyatTablosu.put("Yükseköğretime Giriş ve Kariyer Planlama",3453453.5);
-       fiyatTablosu.put("Türk Dili-I",3453534.5);
-       fiyatTablosu.put("Türk Dili-II",45646.6);
-      fiyatTablosu.put("İngilizce-I",56756756.5);
-      fiyatTablosu.put("İngilizce-II",465546.6);
-      fiyatTablosu.put("Lineer Cebir ve Uygulamaları",14123.1);
+        priceChart.put("Bilgisayar Mühendisliğine Giriş",40000.00);
+        priceChart.put("Algoritma ve Programlama-I",35000.00);
+        priceChart.put("Algoritma ve Programlama-II",35000.00);
+        priceChart.put("Matematik-I",34500.00);
+        priceChart.put("Matematik-II",34500.00);
+        priceChart.put("Fizik-I",30000.00);
+        priceChart.put("Fizik-II",30000.00);
+        priceChart.put("Yükseköğretime Giriş ve Kariyer Planlama",15000.00);
+        priceChart.put("Türk Dili-I",15000.00);
+        priceChart.put("Türk Dili-II",15000.00);
+        priceChart.put("İngilizce-I",15000.00);
+        priceChart.put("İngilizce-II",15000.00);
+        priceChart.put("Lineer Cebir ve Uygulamaları",33000.00);
 
-//aynısını 4 ders içinde yapılacak
-}
+      priceChart.put("Veri Yapıları",40000.00);
+      priceChart.put("Nesne Tabanlı Programlama",40000.00);
+      priceChart.put("Elektronik-I",30000.00);
+      priceChart.put("Ayrık Matematik",25000.00);
+      priceChart.put("Diferansiyel Denklemler",33250.00);
+      priceChart.put("Olasılık ve İstatistik",33250.00);
+      priceChart.put("Atatürk İlkeleri ve İnkılap Tarihi-I",15000.00);
+      priceChart.put("Yazılım Mühendisliği",40000.00);
+      priceChart.put("Bilgisayar Organizasyonu",27850.00);
+      priceChart.put("Genel Biyoloji",15000.00);
+      priceChart.put("İşaretler ve Sistemler",22500.00);
+      priceChart.put("Sayısal Tasarıma Giriş",15000.00);
+      priceChart.put("Kuantum Fiziği",33400.00);
+      priceChart.put("Nümerik Analiz ve Uygulamaları",30000.00);
+      priceChart.put("Atatürk İlkeleri ve İnkılap Tarihi-II",15000.00);
 
-    //4 tane ayrı liste 4 ünede ayrı ayrı dersler add lenecek ve bunları başta görmesi için printleyeceğiz ve bunları da tek tek ücretlerini yazıp tutarı hesaplayıp return ettireceğiz
-    //bunu da burs ile hesaplayıp tekrar printleyeceğiz ve mainde güncel tutarı yazdıracağız
+      priceChart.put("Veri Haberleşmesi ve Bilgisayar Ağları",30000.00);
+      priceChart.put("Veritabanı Yönetim Sistemleri",31250.00);
+      priceChart.put("Mikroişlemciler",32000.00);
+      priceChart.put("İşletim Sistemleri",40000.00);
+      priceChart.put("Yetkinlik Geliştirme",10000.00);
+      priceChart.put("Eleştirel Düşünme, Yaratıcılık ve Girişimcilik",15000.00);
+      priceChart.put("Sistem Programlama",26000.00);
+      priceChart.put("Görsel Tabanlı Programlama",28450.00);
+      priceChart.put("Bilgisayar Grafikleri",37600.00);
+      priceChart.put("Web Programlama",32000.00);
+      priceChart.put("Sistem Analizi ve Tasarımı",17500.00);
+      priceChart.put("Çevre Koruma, İş Sağlığı ve Güvenliği",15000.00);
+      priceChart.put("Mesleki Sorumluluk ve Etik",15000.00);
+
+
+      priceChart.put("Formal Diller ve Otomata",45000.00);
+      priceChart.put("Veri Madenciliği",55750.00);
+      priceChart.put("Mühendislikte Disiplinlerarası Proje",60000.00);
+
+      //seçmeli dersler
+      priceChart.put("Ağ Programlama",24000.00);
+      priceChart.put("Bilgisayar Ağlarında Güvenlik",24000.00);
+      priceChart.put("Gerçek Zamanlı Sistemler",24000.00);
+      priceChart.put("İleri Nesne Tabanlı Programlama",24000.00);
+      priceChart.put("İleri Veritabanı Sistemleri",24000.00);
+      priceChart.put("Kablosuz Haberleşme",24000.00);
+      priceChart.put("Makine Öğrenmesi",24000.00);
+      priceChart.put("Mühendisler İçin Bilgisayar Programlama",24000.00);
+      priceChart.put("Nöral Ağlar",24000.00);
+      priceChart.put("Semantik Web Teknolojileri",24000.00);
+      priceChart.put("Yazılım Kalite Güvencesi ve Testi",24000.00);
+      priceChart.put("Yapay Zeka",24000.00);
+      priceChart.put("Yazılım Gereksinim Analizi",24000.00);
+      priceChart.put("Güç Sistemlerinde Koruma",24000.00);
+      priceChart.put("Robotik",24000.00);
+      priceChart.put("Derin Öğrenme ve Sınıflandırma Teknikler",24000.00);
+      priceChart.put("Sayısal İşaret işleme",24000.00);
+      priceChart.put("Organik Yapılı Elektronik Sistemler",24000.00);
+      priceChart.put("Yenilenebilir Enerji",24000.00);
+      priceChart.put("Katıhal Elektroniği",24000.00);
+      priceChart.put("Yüksek Gerilim Tekniği",24000.00);
+      priceChart.put("Peakup-Bulut Bilişim",24000.00);
+      priceChart.put("DeFacto Bilgi Güvenliği ve BT Yönetişimi",24000.00);
+  }
+
     public ArrayList<String> courseInput() {
         Scanner scan = new Scanner(System.in);
         ArrayList<String> courses = new ArrayList<>();
 
-        // bu kodun aşağısı  dersleri alır ve ona göre ne aldıysa o dersi döner
+
         System.out.println("Almak istediğiniz dersleri giriniz.");
         while (true) {
             System.out.print("Ders: ");
@@ -166,7 +222,7 @@ static Map<Integer,String> sınıfınagöreListe =new HashMap<>();
     static double calculateTuition(ArrayList<String> course) {
         double price=0;
         for(String s: course){
-            price += fiyatTablosu.getOrDefault(s,0.0);
+            price += priceChart.getOrDefault(s,0.0);
         }
         return price;
     }

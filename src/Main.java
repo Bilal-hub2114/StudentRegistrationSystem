@@ -25,7 +25,7 @@ public class Main{
         studentsList.add(student3);
         studentsList.add(student4);
 
-        // sistem direkt ne kadar bursu olduğunu göstersin ve hesaplayın tutarı yazsın..
+
         boolean found = false;
 
         for(Student s: studentsList){
@@ -72,7 +72,7 @@ public class Main{
                     System.out.println("4. Sınıfların Alabileceği Ders Listesi");
                     System.out.println(Course.greade4List);
                 }
-                //kaçıncı sınıf olduğunu göster ve o sınıfa göre ekrana o dönemin derslerini printle liste şeklinde.
+
                 break;
             case 3:
                 if(studentGreade == 1){
