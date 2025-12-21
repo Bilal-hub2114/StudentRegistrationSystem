@@ -218,15 +218,4 @@ public class CourseCatalog {
         System.out.println("Eklenen dersler: " + courses);
         return courses;
     }
-    static double calculateTuition(ArrayList<String> course) {
-        double price=0;
-        for(String s: course){
-            price += priceChart.getOrDefault(s,0.0);
-        }
-        return price;
-    }
-    public double scholarshipAmount(double price,double scholarshipAmount){
-        double bursindirimi = (price * scholarshipAmount) / 100;
-        return price - bursindirimi;
-    }
 }

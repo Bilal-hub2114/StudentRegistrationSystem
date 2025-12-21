@@ -12,7 +12,7 @@ public class Student {
     private String studentPassword;
     private int scholarshipAmount;
 
-    public Student(String studentName,String studentSurname,String studentEmail,int studentID,String studentPassword,int scholarshipAmount) {
+     Student(String studentName,String studentSurname,String studentEmail,int studentID,String studentPassword,int scholarshipAmount) {
         this.studentName=studentName;
         this.studentSurname=studentSurname;
         this.studentID=studentID;
@@ -41,12 +41,28 @@ public class Student {
         System.out.println("Öğrenci Maili: "+ getStudentEmail()+" Öğrencinin Bursu: %"+getScholarshipAmount());
 
     }
-    static double calculateTuition(ArrayList<String> course) {
+    public double calculateTuition(ArrayList<String> course) {
         double price=0;
         for(String s: course){
             price += CourseCatalog.priceChart.getOrDefault(s,0.0);
         }
         return price;
     }
-
+    public double scholarshipAmount(double price,double scholarshipAmount){
+        double bursindirimi = (price * scholarshipAmount) / 100;
+        return price - bursindirimi;
+    }
 }
+
+class GraduateStudent extends Student{
+    public GraduateStudent(String studentName,String studentSurname,String studentEmail,int studentID,String studentPassword,int scholarshipAmount){
+        super(studentName,studentSurname,studentEmail,studentID,studentPassword, scholarshipAmount);
+    }
+
+    @Override
+    public double calculateTuition(ArrayList<String> course){
+        double basePrice = super.calculateTuition(course);
+        return (basePrice*120)/100;
+    }
+}
+

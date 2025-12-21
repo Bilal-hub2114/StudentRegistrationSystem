@@ -79,16 +79,16 @@ public class Main{
                     System.out.println("1.Sınıfların Alabileceği Ders Listesi");
                     System.out.println(CourseCatalog.greade1List);
                     selectCoursesList=course.courseInput();
-                    double sum = course.calculateTuition(selectCoursesList);
-                    System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ course.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
+                    double sum = student.calculateTuition(selectCoursesList);
+                    System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ student.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
 
                 }
                 else if(studentGreade == 2){
                     System.out.println("2. Sınıfların Alabileceği Ders Listesi");
                     System.out.println(CourseCatalog.greade2List);
                     selectCoursesList=course.courseInput();
-                    double sum = course.calculateTuition(selectCoursesList);
-                    System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ course.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
+                    double sum = student.calculateTuition(selectCoursesList);
+                    System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ student.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
 
 
                 }
@@ -96,18 +96,17 @@ public class Main{
                     System.out.println("3. Sınıfların Alabileceği Ders Listesi");
                     System.out.println(CourseCatalog.greade3List);
                     selectCoursesList=course.courseInput();
-                    double sum = course.calculateTuition(selectCoursesList);
-                    System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ course.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
+                    double sum = student.calculateTuition(selectCoursesList);
+                    System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ student.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
 
                 }
                 else if(studentGreade == 4){
                     System.out.println("4. Sınıfların Alabileceği Ders Listesi");
                     System.out.println(CourseCatalog.greade4List);
                     selectCoursesList=course.courseInput();
-                    double sum = course.calculateTuition(selectCoursesList);
-                    System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ course.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
+                    double sum = student.calculateTuition(selectCoursesList);
+                    System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ student.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
                 }
-
                 break;
         }
     }
