@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Student {
 
+
     private String studentName;
     private String studentSurname;
     private String studentEmail;
@@ -39,6 +40,13 @@ public class Student {
         System.out.println("Ögrencinin Adı: "+getStudentName()+" Soyadı: "+getStudentSurname()+" ID'si: "+getStundentID());
         System.out.println("Öğrenci Maili: "+ getStudentEmail()+" Öğrencinin Bursu: %"+getScholarshipAmount());
 
+    }
+    static double calculateTuition(ArrayList<String> course) {
+        double price=0;
+        for(String s: course){
+            price += CourseCatalog.priceChart.getOrDefault(s,0.0);
+        }
+        return price;
     }
 
 }
