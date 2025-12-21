@@ -6,7 +6,7 @@ public class Main{
         //direkt öğrenci tüm bilgilerini girecek ve sistem ona göre correct vericek
 
         Scanner scan = new Scanner(System.in);
-        Course course = new Course();
+        CourseCatalog course = new CourseCatalog();
         List<Student> studentsList = new ArrayList<>();
         ArrayList<String> selectCoursesList = new ArrayList<>();
 
@@ -58,26 +58,26 @@ public class Main{
             case 2:
                 if(studentGreade == 1){
                     System.out.println("1.Sınıfların Alabileceği Ders Listesi");
-                    System.out.println(Course.greade1List);
+                    System.out.println(CourseCatalog.greade1List);
                 }
                 else if(studentGreade == 2){
                     System.out.println("2. Sınıfların Alabileceği Ders Listesi");
-                    System.out.println(Course.greade2List);
+                    System.out.println(CourseCatalog.greade2List);
                 }
                 else if(studentGreade == 3){
                     System.out.println("3. Sınıfların Alabileceği Ders Listesi");
-                    System.out.println(Course.greade3List);
+                    System.out.println(CourseCatalog.greade3List);
                 }
                 else if(studentGreade == 4){
                     System.out.println("4. Sınıfların Alabileceği Ders Listesi");
-                    System.out.println(Course.greade4List);
+                    System.out.println(CourseCatalog.greade4List);
                 }
 
                 break;
             case 3:
                 if(studentGreade == 1){
                     System.out.println("1.Sınıfların Alabileceği Ders Listesi");
-                    System.out.println(Course.greade1List);
+                    System.out.println(CourseCatalog.greade1List);
                     selectCoursesList=course.courseInput();
                     double sum = course.calculateTuition(selectCoursesList);
                     System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ course.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
@@ -85,7 +85,7 @@ public class Main{
                 }
                 else if(studentGreade == 2){
                     System.out.println("2. Sınıfların Alabileceği Ders Listesi");
-                    System.out.println(Course.greade2List);
+                    System.out.println(CourseCatalog.greade2List);
                     selectCoursesList=course.courseInput();
                     double sum = course.calculateTuition(selectCoursesList);
                     System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ course.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
@@ -94,7 +94,7 @@ public class Main{
                 }
                 else if(studentGreade == 3){
                     System.out.println("3. Sınıfların Alabileceği Ders Listesi");
-                    System.out.println(Course.greade3List);
+                    System.out.println(CourseCatalog.greade3List);
                     selectCoursesList=course.courseInput();
                     double sum = course.calculateTuition(selectCoursesList);
                     System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ course.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
@@ -102,7 +102,7 @@ public class Main{
                 }
                 else if(studentGreade == 4){
                     System.out.println("4. Sınıfların Alabileceği Ders Listesi");
-                    System.out.println(Course.greade4List);
+                    System.out.println(CourseCatalog.greade4List);
                     selectCoursesList=course.courseInput();
                     double sum = course.calculateTuition(selectCoursesList);
                     System.out.println("Derslerin Toplam Ücreti: "+sum+" TL | "+ " Burs İndirimli Güncel Tutar: "+ course.scholarshipAmount(sum,student.getScholarshipAmount())+ " TL");
