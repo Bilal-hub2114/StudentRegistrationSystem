@@ -69,11 +69,11 @@ public class Main{
                 break;
 
             case 2:
-                course.dersSınıflarınaGöreListeleme(studentGrade);
+                course.listCourseByGrade(studentGrade);
 
                 break;
             case 3:
-                course.dersSınıflarınaGöreListeleme(studentGrade);
+                course.listCourseByGrade(studentGrade);
                 scan.nextLine();
                 System.out.println("***** Ders ekleyemeyi bitirmek için 'bitir' yazınız *****");
                 while(true){
@@ -89,8 +89,17 @@ public class Main{
                 System.out.println(inputCourses);
 
                 ArrayList<Course> courselist= CourseCatalog.courseInput(inputCourses);
+                for(Course newCourse: courselist){
+                    if(Registration.checkCopy(student.getStudentCourses(),newCourse)==false){
+                        student.getStudentCourses().add(newCourse);
+                        System.out.println(newCourse.getCourseName()+" başarıyla dersiniz eklendi.");
+                    }
+                    else{
+                        System.out.println("Hata! "+newCourse.getCourseCode()+ " dersi daha önceden seçilmiş.");
+                    }
+                }
 
-                System.out.println("Derslerin toplam tutarı : "+student.calculateTuition(courselist)+" TL | Burs indirimiyle: "+ student.scholarshipAmount(student.calculateTuition(courselist),student.getScholarshipAmount()));
+                System.out.println("Derslerin toplam tutarı : "+student.calculateTuition(student.getStudentCourses())+" TL | Burs indirimiyle: "+ student.scholarshipAmount(student.calculateTuition(student.getStudentCourses()),student.getScholarshipAmount()));
                 break;
         }
     }

@@ -11,6 +11,7 @@ public class Student {
     private int studentID;
     private String studentPassword;
     private int scholarshipAmount;
+    private ArrayList<Course> studentCourses=new ArrayList<>();
 
 
      Student(String studentName,String studentSurname,String studentEmail,int studentID,String studentPassword,int scholarshipAmount) {
@@ -20,6 +21,7 @@ public class Student {
         this.studentEmail=studentEmail;
         this.studentPassword=studentPassword;
         this.scholarshipAmount=scholarshipAmount;
+        this.studentCourses=new ArrayList<>();
     }
 
     public String getStudentName(){
@@ -34,6 +36,9 @@ public class Student {
     public String getStudentEmail(){ return studentEmail; }
     public String getStudentPassword(){ return studentPassword; }
     public int getScholarshipAmount(){ return scholarshipAmount; }
+    public ArrayList<Course> getStudentCourses() {
+        return studentCourses;
+    }
 
 
 
@@ -43,6 +48,7 @@ public class Student {
         System.out.println("Öğrenci Maili: "+ getStudentEmail()+" Öğrencinin Bursu: %"+getScholarshipAmount());
 
     }
+
 
     public void getStudentLevel(int studentYear){
          if(studentYear>4&& studentYear<=8){

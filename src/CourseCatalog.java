@@ -137,7 +137,7 @@ public class CourseCatalog {
         allCourses.add(new Course("Peakup-Bulut Bilişim", "BLML306", 4, 24000.00));
         allCourses.add(new Course("DeFacto Bilgi Güvenliği ve BT Yönetişimi", "BLML308", 4, 24000.00));
 }
-public static void dersSınıflarınaGöreListeleme(int studentGrade){
+public static void listCourseByGrade(int studentGrade){
 
         System.out.println(studentGrade+". Sınıf Dersleri Listeleniyor");
         for(Course c: allCourses){
@@ -147,6 +147,7 @@ public static void dersSınıflarınaGöreListeleme(int studentGrade){
         }
         System.out.println();
 }
+
 public static ArrayList<Course> courseInput(ArrayList<String> courses ) {
     ArrayList<Course> selectCourseList = new ArrayList<>();
     for(String course : courses) {
