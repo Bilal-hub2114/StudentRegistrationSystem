@@ -12,6 +12,7 @@ public class Student {
     private String studentPassword;
     private int scholarshipAmount;
 
+
      Student(String studentName,String studentSurname,String studentEmail,int studentID,String studentPassword,int scholarshipAmount) {
         this.studentName=studentName;
         this.studentSurname=studentSurname;
@@ -35,34 +36,37 @@ public class Student {
     public int getScholarshipAmount(){ return scholarshipAmount; }
 
 
+
     public void printStudent(){
 
         System.out.println("Ögrencinin Adı: "+getStudentName()+" Soyadı: "+getStudentSurname()+" ID'si: "+getStundentID());
         System.out.println("Öğrenci Maili: "+ getStudentEmail()+" Öğrencinin Bursu: %"+getScholarshipAmount());
 
     }
-    public double calculateTuition(ArrayList<String> course) {
+
+    public void getStudentLevel(int studentYear){
+         if(studentYear>4&& studentYear<=8){
+             System.out.println("Lisansüstü");
+         }
+         else if (studentYear>=1 && studentYear<=4){
+             System.out.println("Lisans");
+         }
+         else {
+             System.out.println("Hata! Geçersiz sınıf girdiniz.");
+         }
+    }
+    public double calculateTuition(ArrayList<Course> course) {
+
         double price=0;
-        for(String s: course){
-            price += CourseCatalog.priceChart.getOrDefault(s,0.0);
+        for(Course c: course){
+            price+=c.getPrice();
         }
+
         return price;
     }
     public double scholarshipAmount(double price,double scholarshipAmount){
-        double bursindirimi = (price * scholarshipAmount) / 100;
-        return price - bursindirimi;
-    }
-}
-
-class GraduateStudent extends Student{
-    public GraduateStudent(String studentName,String studentSurname,String studentEmail,int studentID,String studentPassword,int scholarshipAmount){
-        super(studentName,studentSurname,studentEmail,studentID,studentPassword, scholarshipAmount);
-    }
-
-    @Override
-    public double calculateTuition(ArrayList<String> course){
-        double basePrice = super.calculateTuition(course);
-        return (basePrice*120)/100;
+        double discount = (price * scholarshipAmount) / 100;
+        return price - discount;
     }
 }
 
