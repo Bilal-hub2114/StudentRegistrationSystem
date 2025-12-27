@@ -21,7 +21,7 @@ public class Main{
         String inputstudentPassword = scan.next();
 
         System.out.println("Lisansüstü okuyorsanız (0)' ı / Lisans okuyorsanız kaçıncı sınıf olduğunuzu giriniz");
-        int studentGrade=scan.nextInt();
+        int studentClass=scan.nextInt();
 
         Student student = new Student("Bilal","Ay","bilalay25@istanbularel.edu.tr",240309006,"bilalay321",25);
         Student student2 = new Student("Arda","Abacı","ardaabacı24@istanbularel.edu.tr",240309007,"ardaabacı321",50);
@@ -69,11 +69,11 @@ public class Main{
                 break;
 
             case 2:
-                course.listCourseByGrade(studentGrade);
+                course.listCourseByGrade(studentClass);
 
                 break;
             case 3:
-                course.listCourseByGrade(studentGrade);
+                course.listCourseByGrade(studentClass);
                 scan.nextLine();
                 System.out.println("***** Ders ekleyemeyi bitirmek için 'bitir' yazınız *****");
                 while(true){
