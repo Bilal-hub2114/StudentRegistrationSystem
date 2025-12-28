@@ -159,7 +159,7 @@ public static void listCourseByGrade(int studentClass){
         System.out.println(studentClass+". Sınıf Dersleri Listeleniyor");
         for(Course c: allCourses){
             if(c.getStudentClass()==studentClass){
-                System.out.println(c.getCourseName());
+                System.out.println("Dersin Adı ve Kodu: "+c.getCourseName()+" "+c.getCourseCode()+" | Dersin Kredisi: "+c.getCourseCredit());
             }
         }
         System.out.println();

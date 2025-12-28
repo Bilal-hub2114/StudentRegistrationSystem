@@ -59,6 +59,22 @@ public class Student implements Registrable {
              System.out.println("Hata! Geçersiz sınıf girdiniz.");
          }
     }
+    @Override
+    public void registerCourse(Course course){
+         this.getStudentCourses().add(course);
+    }
+    @Override
+    public void listCourses(){
+         System.out.println("--------- Kayıt Olunan Dersler ---------");
+         if(studentCourses.isEmpty()){
+             System.out.println("Kayıtlı bir dersiniz yok.");
+         }
+         else{
+             for(Course c: studentCourses){
+                 System.out.println("Dersin Adı: "+ c.getCourseName()+" | Dersin Kodu: "+c.getCourseCode()+" | Dersin Kredisi: "+c.getCourseCredit()+" | Dersin Hocası: "+c.getInstructor().getInstructorName()+" "+c.getInstructor().getInstructorSurname());
+             }
+         }
+    }
     public double calculateTuition(ArrayList<Course> course) {
 
         double price=0;

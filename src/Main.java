@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
+
 public class Main{
 
     //kullanıcı her şeyini kendisi girecek ve kayıt olacak sonrasında ismini ve soyismini girdikten sonra metot ile direkt mail adresi oluşturulacak ve yazdıralacak, giriş için ID ve kendi tanımladığı şifre istenecek...
@@ -86,20 +87,24 @@ public class Main{
                     inputCourses.add(name);
                 }
 
+                System.out.println();
                 System.out.println(inputCourses);
+                System.out.println();
 
                 ArrayList<Course> courselist= CourseCatalog.courseInput(inputCourses);
                 for(Course newCourse: courselist){
                     if(Registration.checkCopy(student.getStudentCourses(),newCourse)==false){
-                        student.getStudentCourses().add(newCourse);
-                        System.out.println(newCourse.getCourseName()+" başarıyla dersiniz eklendi.");
+                        student.registerCourse(newCourse);
+                        System.out.println("(+) "+newCourse.getCourseName()+" başarıyla dersiniz eklendi.");
                     }
                     else{
-                        System.out.println("Hata! "+newCourse.getCourseCode()+ " dersi daha önceden seçilmiş.");
+                        System.out.println("Hata! "+newCourse.getCourseName()+newCourse.getCourseCode()+ " dersi daha önceden eklenmiş.");
                     }
                 }
+                System.out.println("-----------------------------------------------------");
 
                 System.out.println("Derslerin toplam tutarı : "+student.calculateTuition(student.getStudentCourses())+" TL | Burs indirimiyle: "+ student.scholarshipAmount(student.calculateTuition(student.getStudentCourses()),student.getScholarshipAmount()));
+                student.listCourses();
                 break;
         }
     }
