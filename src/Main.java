@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
-
 public class Main{
-
     //kullanıcı her şeyini kendisi girecek ve kayıt olacak sonrasında ismini ve soyismini girdikten sonra metot ile direkt mail adresi oluşturulacak ve yazdıralacak, giriş için ID ve kendi tanımladığı şifre istenecek...
 
     public static void main(String[] args){
@@ -14,6 +12,18 @@ public class Main{
         List<Student> studentsList = new ArrayList<>();
         ArrayList<String> inputCourses = new ArrayList<>();
 
+        System.out.println("--------------ÖĞRENCİ KAYIT PANELİ--------------");
+        System.out.print("Adınız: ");
+        String studentName = scan.nextLine();
+        System.out.print("Soyisminiz: ");
+        String studentSurname = scan.nextLine();
+        System.out.print("Okul ID' niz: ");
+        int studentID = scan.nextInt();
+        scan.nextLine();
+        System.out.print("Şifreniz: ");
+        String studentPassword = scan.nextLine();
+        System.out.print("Burs Oranınız (%): ");
+        int scholarshipAmount =scan.nextInt();
 
 
         System.out.print("Lütfen Öğrenci ID' nizi giriniz: ");
@@ -24,18 +34,14 @@ public class Main{
         System.out.println("Lisansüstü okuyorsanız (0)' ı / Lisans okuyorsanız kaçıncı sınıf olduğunuzu giriniz");
         int studentClass=scan.nextInt();
 
-        Student student = new Student("Bilal","Ay","bilalay25@istanbularel.edu.tr",240309006,"bilalay321",25);
-        Student student2 = new Student("Arda","Abacı","ardaabacı24@istanbularel.edu.tr",240309007,"ardaabacı321",50);
-        Student student3 = new Student("Şevval Esma","Çoban","şevvalcoban23@istanbularel.edu.tr",240309005,"şevvalçoban321",100);
-        Student student4 = new Student("Tuba Süeda","Aytan","tubaaytan22@istanbularel.edu.tr",240309008,"tubaaytan321",100);
+        Student student;
+        if(studentClass==0){
+            student=new GraduateStudent(studentName,studentSurname,studentID,studentPassword,scholarshipAmount);
+        }else{
+            student = new Student(studentName,studentSurname,studentID,studentPassword,scholarshipAmount);
 
-        GraduateStudent graduateStudent=new GraduateStudent("Eren","Yılmaz","erenyılmaz21@istanbularel.edu.tr",240502001,"erenyılmaz321",75);
-
-
+        }
         studentsList.add(student);
-        studentsList.add(student2);
-        studentsList.add(student3);
-        studentsList.add(student4);
 
 
         boolean found = false;
@@ -103,7 +109,7 @@ public class Main{
                 }
                 System.out.println("-----------------------------------------------------");
 
-                System.out.println("Derslerin toplam tutarı : "+student.calculateTuition(student.getStudentCourses())+" TL | Burs indirimiyle: "+ student.scholarshipAmount(student.calculateTuition(student.getStudentCourses()),student.getScholarshipAmount()));
+                student.printPrice(studentClass);
                 student.listCourses();
                 break;
         }

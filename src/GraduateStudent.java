@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 class GraduateStudent extends Student{
-    public GraduateStudent(String studentName,String studentSurname,String studentEmail,int studentID,String studentPassword,int scholarshipAmount){
-        super(studentName,studentSurname,studentEmail,studentID,studentPassword, scholarshipAmount);
+    public GraduateStudent(String studentName,String studentSurname,int studentID,String studentPassword,int scholarshipAmount){
+        super(studentName,studentSurname,studentID,studentPassword, scholarshipAmount);
     }
 
     @Override

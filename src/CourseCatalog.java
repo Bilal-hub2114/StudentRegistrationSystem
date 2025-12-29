@@ -156,13 +156,27 @@ public class CourseCatalog {
 }
 public static void listCourseByGrade(int studentClass){
 
-        System.out.println(studentClass+". Sınıf Dersleri Listeleniyor");
-        for(Course c: allCourses){
-            if(c.getStudentClass()==studentClass){
-                System.out.println("Dersin Adı ve Kodu: "+c.getCourseName()+" "+c.getCourseCode()+" | Dersin Kredisi: "+c.getCourseCredit());
+        if(studentClass==0){
+            System.out.println("Lisansüstü Dersleri Listeleniyor");
+            for(Course c: allCourses){
+                if(c.getStudentClass()==studentClass){
+                    System.out.println("Dersin Adı ve Kodu: "+c.getCourseName()+" "+c.getCourseCode()+" | Dersin Kredisi: "+c.getCourseCredit());
+                }
             }
+            System.out.println();
         }
-        System.out.println();
+        else if (studentClass>=1&&studentClass<=4) {
+            System.out.println(studentClass+". Sınıf Dersleri Listeleniyor");
+            for(Course c: allCourses){
+                if(c.getStudentClass()==studentClass){
+                    System.out.println("Dersin Adı ve Kodu: "+c.getCourseName()+" "+c.getCourseCode()+" | Dersin Kredisi: "+c.getCourseCredit());
+                }
+            }
+            System.out.println();
+        }
+        else{
+            System.out.println("Hata! Eksik ya da yanlış tuşladınız.");
+        }
 }
 
 public static ArrayList<Course> courseInput(ArrayList<String> courses ) {
