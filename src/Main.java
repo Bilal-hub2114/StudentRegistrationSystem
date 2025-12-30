@@ -30,9 +30,11 @@ public class Main{
         int inputstudentID = scan.nextInt();
         System.out.print("Lüften şifrenizi giriniz: ");
         String inputstudentPassword = scan.next();
+        scan.nextLine();
 
         System.out.println("Lisansüstü okuyorsanız (0)' ı / Lisans okuyorsanız kaçıncı sınıf olduğunuzu giriniz");
         int studentClass=scan.nextInt();
+        scan.nextLine();
 
         Student student;
         if(studentClass==0){
@@ -111,6 +113,8 @@ public class Main{
 
                 student.printPrice(studentClass);
                 student.listCourses();
+                student.printGPA(scan);
+
                 break;
         }
     }
