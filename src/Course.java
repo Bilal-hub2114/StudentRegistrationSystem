@@ -7,12 +7,17 @@ public class Course {
     private double price;
     private int courseCredit;
     private int studentGrade;
+    private String courseDay;
+    private String courseStartTime;
+
 
     private Instructor instructor;
 
-    Course(String courseName,String courseCode,int courseCredit,int studentClass,double price,Instructor instructor){
+    Course(String courseName,String courseCode,String courseDay,String courseStartTime,int courseCredit,int studentClass,double price,Instructor instructor){
         this.courseName=courseName;
         this.courseCode=courseCode;
+        this.courseDay=courseDay;
+        this.courseStartTime=courseStartTime;
         this.studentClass=studentClass;
         this.price=price;
         this.courseCredit=courseCredit;
@@ -24,6 +29,8 @@ public class Course {
     public int getStudentClass() { return studentClass; }
     public double getPrice() { return price; }
     public int getCourseCredit() { return courseCredit; }
+    public String getCourseDay() { return courseDay; }
+    public String getCourseStartTime(){ return courseStartTime; }
     public Instructor getInstructor(){ return instructor; }
 
     public void setStudentGrade(int studentGrade){ this.studentGrade=studentGrade;}

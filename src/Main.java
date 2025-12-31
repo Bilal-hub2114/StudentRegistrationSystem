@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 public class Main{
-    //kullanıcı her şeyini kendisi girecek ve kayıt olacak sonrasında ismini ve soyismini girdikten sonra metot ile direkt mail adresi oluşturulacak ve yazdıralacak, giriş için ID ve kendi tanımladığı şifre istenecek...
 
     public static void main(String[] args){
 
@@ -83,7 +82,9 @@ public class Main{
                 break;
             case 3:
                 course.listCourseByGrade(studentClass);
+                inputCourses.clear();
                 scan.nextLine();
+
                 System.out.println("***** Ders ekleyemeyi bitirmek için 'bitir' yazınız *****");
                 while(true){
                     System.out.print("Dersin Adı: ");
@@ -102,8 +103,13 @@ public class Main{
                 ArrayList<Course> courselist= CourseCatalog.courseInput(inputCourses);
                 for(Course newCourse: courselist){
                     if(Registration.checkCopy(student.getStudentCourses(),newCourse)==false){
+                        if(Registration.controlCourseTime(student.getStudentCourses(),newCourse)==false){
                         student.registerCourse(newCourse);
                         System.out.println("(+) "+newCourse.getCourseName()+" başarıyla dersiniz eklendi.");
+                        }
+                        else{
+                            System.out.println("Hata! "+newCourse.getCourseName()+" dersinin saati: "+newCourse.getCourseStartTime()+" "+newCourse.getCourseDay()+" başka bir dersiniz ile çakışıyor.");
+                        }
                     }
                     else{
                         System.out.println("Hata! "+newCourse.getCourseName()+newCourse.getCourseCode()+ " dersi daha önceden eklenmiş.");
@@ -114,6 +120,7 @@ public class Main{
                 student.printPrice(studentClass);
                 student.listCourses();
                 student.printGPA(scan);
+
 
                 break;
         }
