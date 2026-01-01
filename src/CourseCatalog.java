@@ -165,7 +165,7 @@ public static void listCourseByGrade(int studentClass){
             }
             System.out.println();
         }
-        else if (studentClass>=1&&studentClass<=4) {
+        else if (studentClass >=1 && studentClass <=4 ) {
             System.out.println(studentClass+". Sınıf Dersleri Listeleniyor");
             for(Course c: allCourses){
                 if(c.getStudentClass()==studentClass){
@@ -175,7 +175,7 @@ public static void listCourseByGrade(int studentClass){
             System.out.println();
         }
         else{
-            System.out.println("Hata! Eksik ya da yanlış tuşladınız.");
+            System.out.println("[UYARI]: Hata! Eksik ya da yanlış tuşladınız.");
         }
 }
 
