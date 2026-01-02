@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 class GraduateStudent extends Student{
-    public GraduateStudent(String studentName,String studentSurname,int studentID,String studentPassword,int scholarshipAmount){
+    public GraduateStudent(String studentName,String studentSurname,String studentID,String studentPassword,int scholarshipAmount){
         super(studentName,studentSurname,studentID,studentPassword, scholarshipAmount);
     }
 

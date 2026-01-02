@@ -6,13 +6,13 @@ public class Student implements Registrable {
 
     private String studentName;
     private String studentSurname;
-    private int studentID;
+    private String studentID;
     private String studentPassword;
     private int scholarshipAmount;
     private ArrayList<Course> studentCourses=new ArrayList<>();
 
 
-     Student(String studentName,String studentSurname,int studentID,String studentPassword,int scholarshipAmount) {
+     Student(String studentName,String studentSurname,String studentID,String studentPassword,int scholarshipAmount) {
         this.studentName=studentName;
         this.studentSurname=studentSurname;
         this.studentID=studentID;
@@ -28,7 +28,7 @@ public class Student implements Registrable {
     public String getStudentSurname(){
         return studentSurname;
     }
-    public int getStudentID(){
+    public String getStudentID(){
         return studentID;
     }
     public String getStudentPassword(){ return studentPassword; }
@@ -43,14 +43,14 @@ public class Student implements Registrable {
 
     public void printStudent(){
 
-        System.out.println("Ögrencinin Adı: "+getStudentName()+" Soyadı: "+getStudentSurname()+" ID'si: "+getStudentID());
+        System.out.println("Ögrencinin Adı: "+getStudentName()+" Soyadı: "+getStudentSurname()+" | ID: "+getStudentID());
         System.out.print("Öğrenci Maili: ");
         printStudentEmail();
         System.out.println("Öğrencinin Bursu: %"+getScholarshipAmount());
 
     }
     public double calculateGPA() {
-
+//+++++++++
         double totalPoints = 0;
         int totalCredits = 0;
         for (Course c : studentCourses) {
@@ -86,10 +86,18 @@ public class Student implements Registrable {
 
          System.out.println(lowerStudentName+lowerStudentSurname+"25@istanbularel.edu.tr");
     }
-    public void studentControlPanel(){
+
+
+    public void controlStudentID(String inputStudentID){
+
+         String controlID=inputStudentID.replaceAll("[^0-9]","");
+        if(inputStudentID.length()!=9){
+            System.out.println("[UYARI]: Hata! Lütfen 9 basamaklı okul ID' si girdiğinizden emin olun.");
+            System.exit(0);
+
+        }
 
     }
-
 
 
     public void printGPA(Scanner scan){
@@ -138,7 +146,7 @@ public class Student implements Registrable {
 
 
     public double calculateTuition(ArrayList<Course> course) {
-
+//+++++++++
         double price=0;
         for(Course c: course){
             price+=c.getPrice();
@@ -147,6 +155,7 @@ public class Student implements Registrable {
         return price;
     }
     public double scholarshipAmount(double price,double scholarshipAmount){
+         //+++++++
         double discount = (price * scholarshipAmount) / 100;
         return price - discount;
     }

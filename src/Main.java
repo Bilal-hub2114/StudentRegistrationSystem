@@ -17,8 +17,7 @@ public class Main{
         System.out.print("Soyisminiz: ");
         String studentSurname = scan.nextLine();
         System.out.print("Okul ID' niz: ");
-        int studentID = scan.nextInt();
-        scan.nextLine();
+        String studentID = scan.nextLine();
         System.out.print("Şifreniz: ");
         String studentPassword = scan.nextLine();
         System.out.print("Burs Oranınız (%): ");
@@ -36,17 +35,20 @@ public class Main{
         }
         studentsList.add(student);
 
+        student.controlStudentID(studentID);
+
         System.out.print("Lütfen Öğrenci ID' nizi giriniz: ");
-        int inputstudentID = scan.nextInt();
+        String inputstudentID = scan.nextLine();
         System.out.print("Lüften şifrenizi giriniz: ");
         String inputstudentPassword = scan.next();
         scan.nextLine();
 
+        student.controlStudentID(inputstudentID);
 
         System.out.println();
         boolean found = false;
         for(Student s: studentsList){
-            if(s.getStudentID() == inputstudentID && s.getStudentPassword().equals(inputstudentPassword)) {
+            if(s.getStudentID().equals(inputstudentID) && s.getStudentPassword().equals(inputstudentPassword)) {
                 System.out.println("================ Hoşgeldin " + s.getStudentName() + " " + s.getStudentSurname()+" ================");
                 System.out.println();
                 s.printStudent();
@@ -55,6 +57,7 @@ public class Main{
                 break;
             }
         if(!found){
+            // hata, öğrenci ıd si ya da şifre eksik ya da yanlış tuşladınız... gibi bir şey mi olmalı?
             System.out.println("[UYARI]: Hata! "+ inputstudentID+ " Numaralı öğrenci bulunamadı...");
             System.exit(0);
         }
