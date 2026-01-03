@@ -38,9 +38,6 @@ public class Student implements Registrable {
     }
 
 
-
-
-
     public void printStudent(){
 
         System.out.println("Ögrencinin Adı: "+getStudentName()+" Soyadı: "+getStudentSurname()+" | ID: "+getStudentID());
@@ -49,19 +46,21 @@ public class Student implements Registrable {
         System.out.println("Öğrencinin Bursu: %"+getScholarshipAmount());
 
     }
-    public double calculateGPA() {
-//+++++++++
-        double totalPoints = 0;
-        int totalCredits = 0;
-        for (Course c : studentCourses) {
-            totalPoints += c.getStudentGrade() * c.getCourseCredit();
-            totalCredits += c.getCourseCredit();
 
-        }
-        if(totalCredits==0){ return totalPoints / totalCredits; }
-
-        return totalPoints / totalCredits;
+    public void printNoCourseWarning(){
+        System.out.println("======================================================");
+        System.out.println("[UYARI]: Henüz bir ders kaydınız bulunmamaktadır.");
+        System.out.println("Lütfen kayıt için 3. seçeneği tuşlayınız.");
+        System.out.println("                   MENÜYE DÖNÜLÜYOR...");
+        System.out.println("======================================================");
     }
+
+    public void printReturnToMenu(){
+        System.out.println("======================================================");
+        System.out.println("                   MENÜYE DÖNÜLÜYOR...");
+        System.out.println("======================================================");
+    }
+
 
     public void printPrice(int studentClass){
          if(studentClass ==0 ){
@@ -88,19 +87,8 @@ public class Student implements Registrable {
     }
 
 
-    public void controlStudentID(String inputStudentID){
-
-         String controlID=inputStudentID.replaceAll("[^0-9]","");
-        if(inputStudentID.length()!=9){
-            System.out.println("[UYARI]: Hata! Lütfen 9 basamaklı okul ID' si girdiğinizden emin olun.");
-            System.exit(0);
-
-        }
-
-    }
-
-
     public void printGPA(Scanner scan){
+
         System.out.println("------------DÖNEM SONU NOT GİRİŞ PANELİ------------");
         System.out.println("Seçilen derslerin notlarını giriniz: ");
         for(Course c: getStudentCourses()) {
@@ -128,37 +116,7 @@ public class Student implements Registrable {
         System.out.println(newStudentName+" "+newStudentSurname+" Genel Ortalamanız (GPA): "+calculateGPA());
     }
 
-    public void reductionOfCourses(String inputName){
-         boolean found = false;
-         for(int i =0; i<studentCourses.size();i++){
-             if(studentCourses.get(i).getCourseName().equalsIgnoreCase(inputName)){
-                 studentCourses.remove(i);
-                 System.out.println("(-) ["+inputName+"] dersi başarıyla çıkarıldı.");
-                 found = true;
-                 i--;
-                 break;
-             }
-         }
-         if(found == false){
-             System.out.println("[UYARI]: Hata! Ders listenizde ["+inputName+"] adında bir ders bulunamadı");
-         }
-    }
 
-
-    public double calculateTuition(ArrayList<Course> course) {
-//+++++++++
-        double price=0;
-        for(Course c: course){
-            price+=c.getPrice();
-        }
-
-        return price;
-    }
-    public double scholarshipAmount(double price,double scholarshipAmount){
-         //+++++++
-        double discount = (price * scholarshipAmount) / 100;
-        return price - discount;
-    }
     @Override
     public void registerCourse(Course course){
          this.getStudentCourses().add(course);
@@ -182,5 +140,54 @@ public class Student implements Registrable {
         System.out.println();
     }
 
+
+    public double calculateGPA() {
+
+        double totalPoints = 0;
+        int totalCredits = 0;
+        for (Course c : studentCourses) {
+            totalPoints += c.getStudentGrade() * c.getCourseCredit();
+            totalCredits += c.getCourseCredit();
+
+        }
+        if(totalCredits==0){ return totalPoints / totalCredits; }
+
+        return totalPoints / totalCredits;
+    }
+
+
+    public void reductionOfCourses(String inputName){
+         boolean found = false;
+         for(int i =0; i<studentCourses.size();i++){
+             if(studentCourses.get(i).getCourseName().equalsIgnoreCase(inputName)){
+                 studentCourses.remove(i);
+                 System.out.println("(-) ["+inputName+"] dersi başarıyla çıkarıldı.");
+                 found = true;
+                 i--;
+                 break;
+             }
+         }
+         if(found == false){
+             System.out.println("[UYARI]: Hata! Ders listenizde ["+inputName+"] adında bir ders bulunamadı");
+         }
+    }
+
+
+    public double calculateTuition(ArrayList<Course> course) {
+
+        double price=0;
+        for(Course c: course){
+            price+=c.getPrice();
+        }
+
+        return price;
+    }
+
+
+    public double scholarshipAmount(double price,double scholarshipAmount){
+
+        double discount = (price * scholarshipAmount) / 100;
+        return price - discount;
+    }
 }
 

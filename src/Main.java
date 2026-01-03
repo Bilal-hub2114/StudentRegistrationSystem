@@ -10,6 +10,8 @@ public class Main{
         CourseCatalog course = new CourseCatalog();
         List<Student> studentsList = new ArrayList<>();
         ArrayList<String> inputCourses = new ArrayList<>();
+        SecurityControl control = new SecurityControl();
+        Student student;
 
         System.out.println("================ ÖĞRENCİ KAYIT PANELİ ================");
         System.out.print("Adınız: ");
@@ -18,16 +20,20 @@ public class Main{
         String studentSurname = scan.nextLine();
         System.out.print("Okul ID' niz: ");
         String studentID = scan.nextLine();
+        control.controlStudentID(studentID);
+
         System.out.print("Şifreniz: ");
         String studentPassword = scan.nextLine();
         System.out.print("Burs Oranınız (%): ");
         int scholarshipAmount =scan.nextInt();
+        control.controlScholarshipAmount(scholarshipAmount);
+
         System.out.println("Lisansüstü okuyorsanız (0)' ı / Lisans okuyorsanız kaçıncı sınıf olduğunuzu giriniz");
         System.out.print("Seçiminiz: ");
         int studentClass=scan.nextInt();
         scan.nextLine();
 
-        Student student;
+
         if(studentClass==0){
             student=new GraduateStudent(studentName,studentSurname,studentID,studentPassword,scholarshipAmount);
         }else{
@@ -35,15 +41,15 @@ public class Main{
         }
         studentsList.add(student);
 
-        student.controlStudentID(studentID);
 
         System.out.print("Lütfen Öğrenci ID' nizi giriniz: ");
         String inputstudentID = scan.nextLine();
+        control.controlStudentID(inputstudentID);
+
         System.out.print("Lüften şifrenizi giriniz: ");
         String inputstudentPassword = scan.next();
         scan.nextLine();
 
-        student.controlStudentID(inputstudentID);
 
         System.out.println();
         boolean found = false;
@@ -83,14 +89,12 @@ public class Main{
 
                 case 1:
                     if(student.getStudentCourses().isEmpty()) {
-                        System.out.println("======================================================");
-                        System.out.println("[UYARI]: Henüz bir ders kaydınız bulunmamaktadır.");
-                        System.out.println("Lütfen kayıt için 3. seçeneği tuşlayınız.");
-                        System.out.println("                   MENÜYE DÖNÜLÜYOR...");
-                        System.out.println("======================================================");
+                    student.printNoCourseWarning();
                         break;
                     }
                     else{
+                        System.out.println("================ Mevcut Ders Listesi ================");
+                        course.listCourseByGrade(studentClass);
                         System.out.println("================ Ders ekleyemeyi bitirmek için 'bitir' yazınız ================");
                         while (true) {
                             System.out.print("Dersin Adı: ");
@@ -101,23 +105,17 @@ public class Main{
                             }
                             inputCourses.add(name);
                         }
-                        System.out.println("======================================================");
-                        System.out.println("                   MENÜYE DÖNÜLÜYOR...");
-                        System.out.println("======================================================");
+                        student.printReturnToMenu();
                         break;
                     }
                 case 2:
                     if(student.getStudentCourses().isEmpty()) {
-                        System.out.println("======================================================");
-                        System.out.println("[UYARI]: Henüz bir ders kaydınız bulunmamaktadır.");
-                        System.out.println("Lütfen kayıt için 3. seçeneği tuşlayınız.");
-                        System.out.println("                   MENÜYE DÖNÜLÜYOR...");
-                        System.out.println("======================================================");
+                        student.printNoCourseWarning();
                         break;
                     }
                     else{
-                        System.out.println("================ Mevcut Ders Programı ================");
-                        student.listCourses();
+                        System.out.println("================ Mevcut Ders Listesi ================");
+                        course.listCourseByGrade(studentClass);
                         System.out.println("================ Ders çıkarmayı bitirmek için 'bitir' yazınız ================");
 
                         while(true){
@@ -136,22 +134,17 @@ public class Main{
 
                 case 3:
                     if(student.getStudentCourses().isEmpty()) {
-                        System.out.println("======================================================");
-                        System.out.println("[UYARI]: Henüz bir ders kaydınız bulunmamaktadır.");
-                        System.out.println("Lütfen kayıt için 3. seçeneği tuşlayınız.");
-                        System.out.println("                   MENÜYE DÖNÜLÜYOR...");
-                        System.out.println("======================================================");
+                        student.printNoCourseWarning();
                         break;
                     }
                     else{
-                        student.listCourses();
+                        course.listCourseByGrade(studentClass);
                     break;
                     }
+
                 case 4:
                     course.listCourseByGrade(studentClass);
                     inputCourses.clear();
-
-
 
                     System.out.println("================ Ders ekleyemeyi bitirmek için 'bitir' yazınız ================");
                     while (true) {
@@ -189,25 +182,18 @@ public class Main{
                     student.listCourses();
                     student.printPrice(studentClass);
 
-                    System.out.println("======================================================");
-                    System.out.println("                   MENÜYE DÖNÜLÜYOR...");
-                    System.out.println("======================================================");
-
-
+                    student.printReturnToMenu();
                     break;
+
                 case 5:
                     if(student.getStudentCourses().isEmpty()) {
-                    System.out.println("======================================================");
-                    System.out.println("[UYARI]: Henüz bir ders kaydınız bulunmamaktadır.");
-                    System.out.println("Lütfen kayıt için 3. seçeneği tuşlayınız.");
-                    System.out.println("                   MENÜYE DÖNÜLÜYOR...");
-                    System.out.println("======================================================");
-                }
+                        student.printNoCourseWarning();
+                    }
                     else{
                      student.printGPA(scan);
-                }
-
+                    }
                     break;
+
              case 6:
                  System.out.println("[OBS]: Güvenli çıkış başarıyla yapıldı. İYİ DERSLER...");
                 System.exit(0);
