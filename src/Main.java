@@ -42,6 +42,10 @@ public class Main{
         studentsList.add(student);
 
 
+        String csvData = student.getStudentID() + "," + student.getStudentName() + "," + student.getStudentSurname() + "," + student.getScholarshipAmount();
+        CsvCrud.create("students.csv", csvData);
+        System.out.println("[BİLGİ]: Bilgileriniz 'students.csv' dosyasına kaydedilmiştir.");
+
         System.out.print("Lütfen Öğrenci ID' nizi giriniz: ");
         String inputstudentID = scan.nextLine();
         control.controlStudentID(inputstudentID);
@@ -63,8 +67,7 @@ public class Main{
                 break;
             }
         if(!found){
-            // hata, öğrenci ıd si ya da şifre eksik ya da yanlış tuşladınız... gibi bir şey mi olmalı?
-            System.out.println("[UYARI]: Hata! "+ inputstudentID+ " Numaralı öğrenci bulunamadı...");
+            System.out.println("[UYARI]: Hata! Eksik ya da yanlış tuşladınız...");
             System.exit(0);
         }
         }
@@ -170,6 +173,9 @@ public class Main{
                         if (Registration.checkCopy(student.getStudentCourses(), newCourse) == false) {
                             if (Registration.controlCourseTime(student.getStudentCourses(), newCourse) == false) {
                                 student.registerCourse(newCourse);
+                                String regData = student.getStudentID()+ ","+ newCourse.getCourseCode()+","+newCourse.getCourseName();
+                                CsvCrud.create("registrations.csv",regData);
+                                System.out.println("[BİLGİ]: "+newCourse.getCourseName()+" dersi 'registrations.csv' dosyasına kaydedilmiştir...");
                                 System.out.println("(+) [" + newCourse.getCourseName() + "] dersiniz başarıyla eklendi.");
                             } else {
                                 System.out.println("[UYARI]: Hata! " + newCourse.getCourseName() + " dersinin saati: " + newCourse.getCourseStartTime() + " " + newCourse.getCourseDay() + " başka bir dersiniz ile çakışıyor.");
@@ -199,7 +205,6 @@ public class Main{
                 System.exit(0);
 
             }
-
         }
     }
 }
