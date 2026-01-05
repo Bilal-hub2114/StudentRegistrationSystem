@@ -6,7 +6,7 @@ public class Course {
     private int studentClass;
     private double price;
     private int courseCredit;
-    private int studentGrade;
+    private double studentGrade;
     private String courseDay;
     private String courseStartTime;
 
@@ -23,7 +23,7 @@ public class Course {
         this.courseCredit=courseCredit;
         this.instructor=instructor;
     }
-    public int getStudentGrade(){ return  studentGrade;}
+    public double getStudentGrade(){ return  studentGrade;}
     public String getCourseName() { return courseName; }
     public String getCourseCode() { return courseCode; }
     public int getStudentClass() { return studentClass; }
@@ -33,6 +33,6 @@ public class Course {
     public String getCourseStartTime(){ return courseStartTime; }
     public Instructor getInstructor(){ return instructor; }
 
-    public void setStudentGrade(int studentGrade){ this.studentGrade=studentGrade;}
+    public void setStudentGrade(double studentGrade){ this.studentGrade=studentGrade;}
 
 }

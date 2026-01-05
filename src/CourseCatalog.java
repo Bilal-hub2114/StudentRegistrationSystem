@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class CourseCatalog {
     static ArrayList<Course> allCourses = new ArrayList<>();
 
@@ -178,7 +177,6 @@ public static void listCourseByGrade(int studentClass){
             System.out.println("[UYARI]: Hata! Eksik ya da yanlış tuşladınız.");
         }
 }
-
 public static ArrayList<Course> courseInput(ArrayList<String> courses ) {
     ArrayList<Course> selectCourseList = new ArrayList<>();
     for(String course : courses) {

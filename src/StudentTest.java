@@ -9,10 +9,14 @@ public class StudentTest {
     public void testCalculateGPA(){
         Student student = new Student("Bilal","Ay","240309006","bilalay321",50);
         Course c1= new Course("Matematik","MAT101","PAZARTESİ","09.00",4,1,24000,null);
-        c1.setStudentGrade(90);
 
+        double vize =80;
+        double finalNote=90;
+        double expected= (vize*0.4)+(finalNote*0.6);
+
+        c1.setStudentGrade(expected);
         student.registerCourse(c1);
-        assertEquals(90.0,student.calculateGPA(),0.01);
+        assertEquals(86.0,student.calculateGPA(),0.01);
     }
 
     @Test

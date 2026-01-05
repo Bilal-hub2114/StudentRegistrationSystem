@@ -16,8 +16,10 @@ public class Main{
         System.out.println("================ ÖĞRENCİ KAYIT PANELİ ================");
         System.out.print("Adınız: ");
         String studentName = scan.nextLine();
+
         System.out.print("Soyisminiz: ");
         String studentSurname = scan.nextLine();
+
         System.out.print("Okul ID' niz: ");
         String studentID = scan.nextLine();
         control.controlStudentID(studentID);
@@ -25,13 +27,12 @@ public class Main{
         System.out.print("Şifreniz: ");
         String studentPassword = scan.nextLine();
         System.out.print("Burs Oranınız (%): ");
-        int scholarshipAmount =scan.nextInt();
-        control.controlScholarshipAmount(scholarshipAmount);
+        int scholarshipAmount = control.controlScholarshipAmount(scan);
+
 
         System.out.println("Lisansüstü okuyorsanız (0)' ı / Lisans okuyorsanız kaçıncı sınıf olduğunuzu giriniz");
         System.out.print("Seçiminiz: ");
-        int studentClass=scan.nextInt();
-        scan.nextLine();
+        int studentClass=control.controlInputStudentClass(scan);
 
 
         if(studentClass==0){
@@ -84,8 +85,7 @@ public class Main{
             System.out.println("6 - Menüden Güvenli Çıkış");
 
             System.out.print("Seçiminiz: ");
-            int select = scan.nextInt();
-            scan.nextLine();
+            int select = control.controlInputSelect(scan);
             System.out.println("------------------------------------------------------");
 
             switch (select) {
@@ -100,13 +100,32 @@ public class Main{
                         course.listCourseByGrade(studentClass);
                         System.out.println("================ Ders ekleyemeyi bitirmek için 'bitir' yazınız ================");
                         while (true) {
-                            System.out.print("Dersin Adı: ");
-                            String name = scan.nextLine();
+                            System.out.print("Eklemek İstediğiniz Dersin Adı: ");
+                            String coursesName = scan.nextLine().trim();
 
-                            if (name.equalsIgnoreCase("bitir")) {
+                            if (coursesName.equalsIgnoreCase("bitir")) {
                                 break;
                             }
-                            inputCourses.add(name);
+                            inputCourses.clear();
+                            inputCourses.add(coursesName);
+                            ArrayList<Course> selected = CourseCatalog.courseInput(inputCourses);
+
+                            for(Course c: selected){
+                                if (!Registration.checkCopy(student.getStudentCourses(), c)) {
+                                  if(!Registration.controlCourseTime(student.getStudentCourses(), c)) {
+                                    student.registerCourse(c);
+                                    System.out.println("(+) ["+c.getCourseName()+"] dersi listenize eklendi.");
+                                  }
+                                  else{
+                                     System.out.println("[HATA]: Ders saati çakışıyor.");
+                                  }
+
+                                }
+                            else{
+                                System.out.println("[UYARI]: Bu ders daha önceden listenize eklenmiş.");
+                            }
+                            }
+
                         }
                         student.printReturnToMenu();
                         break;
@@ -118,21 +137,20 @@ public class Main{
                     }
                     else{
                         System.out.println("================ Mevcut Ders Listesi ================");
-                        course.listCourseByGrade(studentClass);
+                        student.listCourses();
                         System.out.println("================ Ders çıkarmayı bitirmek için 'bitir' yazınız ================");
 
                         while(true){
-                        System.out.print("Çıkarmak istediğiniz dersi yazınız: ");
-
-                        String inputCourseName= scan.nextLine();
+                        System.out.print("Çıkarmak İstediğiniz Dersi Yazınız: ");
+                        String inputCourseName= scan.nextLine().trim();
+                            //BURAYA BAKACAĞIZ AMA NE GİBİ HATA ALIRIZ BİLİNMİYOR ŞUANLIK
                             if (inputCourseName.equalsIgnoreCase("bitir")) {
                                 break;
                             }
-
                          student.reductionOfCourses(inputCourseName);
                         }
                     }
-
+                    student.printReturnToMenu();
                     break;
 
                 case 3:
@@ -141,7 +159,7 @@ public class Main{
                         break;
                     }
                     else{
-                        course.listCourseByGrade(studentClass);
+                        student.listCourses();
                     break;
                     }
 
@@ -152,7 +170,8 @@ public class Main{
                     System.out.println("================ Ders ekleyemeyi bitirmek için 'bitir' yazınız ================");
                     while (true) {
                         System.out.print("Dersin Adı: ");
-                        String name = scan.nextLine();
+                        String name = scan.nextLine().trim();
+                        //BURAYA BAKACAĞIZ AMA NE GİBİ HATA ALIRIZ BİLİNMİYOR ŞUANLIK
 
                         if (name.equalsIgnoreCase("bitir")) {
                             break;
@@ -187,7 +206,6 @@ public class Main{
                     System.out.println();
                     student.listCourses();
                     student.printPrice(studentClass);
-
                     student.printReturnToMenu();
                     break;
 
@@ -196,6 +214,7 @@ public class Main{
                         student.printNoCourseWarning();
                     }
                     else{
+
                      student.printGPA(scan);
                     }
                     break;

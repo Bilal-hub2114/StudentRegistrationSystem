@@ -1,8 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Student implements Registrable {
 
+
+    SecurityControl control = new SecurityControl();
 
     private String studentName;
     private String studentSurname;
@@ -50,7 +53,7 @@ public class Student implements Registrable {
     public void printNoCourseWarning(){
         System.out.println("======================================================");
         System.out.println("[UYARI]: Henüz bir ders kaydınız bulunmamaktadır.");
-        System.out.println("Lütfen kayıt için 3. seçeneği tuşlayınız.");
+        System.out.println("Lütfen kayıt için 4. seçeneği tuşlayınız.");
         System.out.println("                   MENÜYE DÖNÜLÜYOR...");
         System.out.println("======================================================");
     }
@@ -90,23 +93,27 @@ public class Student implements Registrable {
     public void printGPA(Scanner scan){
 
         System.out.println("------------DÖNEM SONU NOT GİRİŞ PANELİ------------");
+        System.out.println("Lütfen 0 ile 100 arasında not girişi yapınız.");
         System.out.println("Seçilen derslerin notlarını giriniz: ");
         for(Course c: getStudentCourses()) {
-            System.out.print(c.getCourseName() + " (" + c.getCourseCode() + ") [" + c.getCourseCredit() + "] " + "Notu: ");
-            int grade = scan.nextInt();
+            System.out.print(c.getCourseName() + " (" + c.getCourseCode() + ") [" + c.getCourseCredit() + "] " + "Vize Notu: ");
+            int vize = control.controlInputStudentGrade(scan);
+            System.out.print(c.getCourseName() + " (" + c.getCourseCode() + ") [" + c.getCourseCredit() + "] " + "Final Notu: ");
+            int finall = control.controlInputStudentGrade(scan);
+            double grade=(vize*0.4)+(finall*0.6);
             c.setStudentGrade(grade);
             if (grade >= 90) {
-                System.out.println("Ders Notu Harfiniz = AA.");
+                System.out.println("Ders Notu: "+grade+"Ders Notu Harfiniz = AA.");
             } else if (grade >= 80) {
-                System.out.println("Ders Notu Harfiniz = BA.");
+                System.out.println("Ders Notu: "+grade+"Ders Notu Harfiniz = BA.");
             }
-            else if(grade >= 70){System.out.println("Ders Notu Harfiniz = BB.");}
-            else if(grade >= 60){System.out.println("Ders Notu Harfiniz = CB.");}
-            else if(grade >= 50){System.out.println("Ders Notu Harfiniz = CC.");}
-            else if(grade >= 45){System.out.println("Ders Notu Harfiniz = DC.");}
-            else if(grade >= 40){System.out.println("Ders Notu Harfiniz = DD.");}
+            else if(grade >= 70){System.out.println("Ders Notu: "+grade+"Ders Notu Harfiniz = BB.");}
+            else if(grade >= 60){System.out.println("Ders Notu: "+grade+"Ders Notu Harfiniz = CB.");}
+            else if(grade >= 50){System.out.println("Ders Notu: "+grade+"Ders Notu Harfiniz = CC.");}
+            else if(grade >= 45){System.out.println("Ders Notu: "+grade+"Ders Notu Harfiniz = DC.");}
+            else if(grade >= 40){System.out.println("Ders Notu: "+grade+"Ders Notu Harfiniz = DD.");}
             else{
-                System.out.println("Ders Notu Harfiniz = FF.");
+                System.out.println("Ders Notu: "+grade+"Ders Notu Harfiniz = FF.");
             }
         }
         System.out.println("---------------------------------------------------");
@@ -127,6 +134,7 @@ public class Student implements Registrable {
          System.out.println("------------- Kayıt Olunan Dersler -------------");
          int totalCredits=0;
 
+         if(!studentCourses.isEmpty()){
              for(Course c: studentCourses){
                  System.out.println("Dersin Adı: "+ c.getCourseName()+" | Dersin Kodu: "+c.getCourseCode()+" | Dersin Kredisi: "+c.getCourseCredit()+" | Dersin Hocası: "+c.getInstructor().getInstructorName()+" "+c.getInstructor().getInstructorSurname());
                  totalCredits+=c.getCourseCredit();
@@ -134,6 +142,10 @@ public class Student implements Registrable {
              if(totalCredits>60){
                  System.out.println("[UYARI]: Maksimum alabileceğiniz krediyi geçtiniz.");
              }
+         }
+         else{
+             System.out.println("[UYARI]: Henüz bir ders kaydınız bulunmamaktadır.");
+         }
 
         System.out.println();
         System.out.println("Toplam Ders Sayısı: "+this.studentCourses.size()+ " Toplam Dönem Kredisi : "+ totalCredits+" | 60");
